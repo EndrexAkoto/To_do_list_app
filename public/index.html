@@ -3,29 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced To-Do List</title>
+    <title>Advanced To-Do List with Time</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>My To-Do List</h1>
-    <div id="taskInput">
-        <input type="text" id="newTask" placeholder="Add a new task...">
-        <button onclick="addTask()">Add Task</button>
+    <h1>My To-Do List with Time</h1>
+
+    <div class="calendar">
+        <!-- Monday -->
+        <div class="day">
+            <h2>Monday</h2>
+            <ul class="taskList">
+                <!-- Tasks for Monday will be added here dynamically -->
+            </ul>
+            <input type="text" class="newTask" placeholder="Task">
+            <input type="time" class="newTaskTime" value="09:00">
+            <button onclick="addTask('Monday')">Add Task</button>
+        </div>
+
+        <!-- Tuesday -->
+        <div class="day">
+            <h2>Tuesday</h2>
+            <ul class="taskList">
+                <!-- Tasks for Tuesday will be added here dynamically -->
+            </ul>
+            <input type="text" class="newTask" placeholder="Task">
+            <input type="time" class="newTaskTime" value="09:00">
+            <button onclick="addTask('Tuesday')">Add Task</button>
+        </div>
+
+        <!-- Wednesday -->
+        <div class="day">
+            <h2>Wednesday</h2>
+            <ul class="taskList">
+                <!-- Tasks for Wednesday will be added here dynamically -->
+            </ul>
+            <input type="text" class="newTask" placeholder="Task">
+            <input type="time" class="newTaskTime" value="09:00">
+            <button onclick="addTask('Wednesday')">Add Task</button>
+        </div>
+
+        <!-- Thursday -->
+        <div class="day">
+            <h2>Thursday</h2>
+            <ul class="taskList">
+                <!-- Tasks for Thursday will be added here dynamically -->
+            </ul>
+            <input type="text" class="newTask" placeholder="Task">
+            <input type="time" class="newTaskTime" value="09:00">
+            <button onclick="addTask('Thursday')">Add Task</button>
+        </div>
+
+        <!-- Friday -->
+        <div class="day">
+            <h2>Friday</h2>
+            <ul class="taskList">
+                <!-- Tasks for Friday will be added here dynamically -->
+            </ul>
+            <input type="text" class="newTask" placeholder="Task">
+            <input type="time" class="newTaskTime" value="09:00">
+            <button onclick="addTask('Friday')">Add Task</button>
+        </div>
+
+        <!-- Saturday -->
+        <div class="day">
+            <h2>Saturday</h2>
+            <ul class="taskList">
+                <!-- Tasks for Saturday will be added here dynamically -->
+            </ul>
+            <input type="text" class="newTask" placeholder="Task">
+            <input type="time" class="newTaskTime" value="09:00">
+            <button onclick="addTask('Saturday')">Add Task</button>
+        </div>
+
+        <!-- Sunday -->
+        <div class="day">
+            <h2>Sunday</h2>
+            <ul class="taskList">
+                <!-- Tasks for Sunday will be added here dynamically -->
+            </ul>
+            <input type="text" class="newTask" placeholder="Task">
+            <input type="time" class="newTaskTime" value="09:00">
+            <button onclick="addTask('Sunday')">Add Task</button>
+        </div>
     </div>
-    <div id="filters">
-        <label for="priorityFilter">Priority:</label>
-        <select id="priorityFilter">
-            <option value="all">All</option>
-            <option value="high">High</option>
-            <option value="medium">Medium</option>
-            <option value="low">Low</option>
-        </select>
-        <button onclick="filterTasks()">Filter</button>
-    </div>
-    <ul id="taskList">
-        <!-- Tasks will be added here dynamically -->
-    </ul>
-    <script src="script.js"></script>
+
+    <script src="../src/utils/script.js"></script>
+    <script>
+        // Function to add a new task for a specific day
+        function addTask(day) {
+            const taskInput = document.querySelector(`.${day.toLowerCase()} .newTask`);
+            const taskTimeInput = document.querySelector(`.${day.toLowerCase()} .newTaskTime`);
+            const taskList = document.querySelector(`.${day.toLowerCase()} .taskList`);
+            const taskText = taskInput.value.trim();
+            const taskTime = taskTimeInput.value.trim();
+
+            if (taskText !== '') {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `${taskText} (${taskTime})`;
+                taskList.appendChild(listItem);
+                taskInput.value = ''; // Clear task input field after adding task
+            }
+        }
+    </script>
 </body>
 </html>
-
